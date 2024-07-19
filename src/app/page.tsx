@@ -1,6 +1,10 @@
 "use client";
 import { useOpenConnectModal } from '@0xsequence/kit'
-import { useDisconnect, useAccount } from 'wagmi'
+import { useDisconnect, useAccount, useWalletClient, useSendTransaction } from 'wagmi'
+import { CardButton } from "./components/CardButton";
+import { useEffect, useState } from "react";
+import { Box, Text } from "@0xsequence/design-system";
+import FullScreenLoading from "./components/FullScreenLoading/FullScreenLoading";
 
 const HomePage = () => {
   const { setOpenConnectModal } = useOpenConnectModal()

@@ -4,13 +4,13 @@ import { getDefaultWaasConnectors } from '@0xsequence/kit-connectors'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactNode, useEffect, useState } from 'react'
 import { createConfig, http, WagmiProvider } from 'wagmi'
-import { mainnet, polygon, Chain } from 'wagmi/chains'
+import { mainnet, polygon, Chain, polygonAmoy, arbitrumSepolia } from 'wagmi/chains'
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 const Providers = (props: { children: ReactNode }) => {
   const { children } = props;
-  const chains = [mainnet, polygon] as [Chain, ...Chain[]]
+  const chains = [mainnet, polygon, polygonAmoy, arbitrumSepolia] as [Chain, ...Chain[]];
   const [isClient, setIsClient] = useState(false);
 
   // Get your own keys on sequence.build
@@ -62,7 +62,8 @@ const Providers = (props: { children: ReactNode }) => {
     // Notice: AppleID will only work if deployed on https to support Apple redirects
     // appleClientId,
     // appleRedirectURI,
-    defaultChainId: 137,
+    /* Arbitrum sepolia chainId */
+    defaultChainId: 421614,
     appName: 'Kit Starter',
     projectAccessKey
   })
