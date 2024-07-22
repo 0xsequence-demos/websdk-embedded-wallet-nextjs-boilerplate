@@ -2,7 +2,7 @@
 import { KitProvider } from '@0xsequence/kit'
 import { getDefaultWaasConnectors } from '@0xsequence/kit-connectors'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { ReactNode } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import { createConfig, http, WagmiProvider } from 'wagmi'
 import { mainnet, polygon, Chain } from 'wagmi/chains'
 
@@ -11,6 +11,7 @@ const queryClient = new QueryClient()
 const Providers = (props: { children: ReactNode }) => {
   const { children } = props;
   const chains = [mainnet, polygon] as [Chain, ...Chain[]]
+  const [isClient, setIsClient] = useState(false);
 
   // Get your own keys on sequence.build
   const projectAccessKey = process.env.NEXT_PUBLIC_PROJECT_ACCESS_KEY || 'AQAAAAAAAEGvyZiWA9FMslYeG_yayXaHnSI'
@@ -18,7 +19,7 @@ const Providers = (props: { children: ReactNode }) => {
   const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID || '970987756660-35a6tc48hvi8cev9cnknp0iugv9poa23.apps.googleusercontent.com'
   // const appleClientId = process.env.NEXT_PUBLIC_APPLE_CLIENT_ID || 'com.horizon.sequence.waas'
   // const appleRedirectURI = window.location.origin + window.location.pathname //this approach doesn't work with nextjs
-  const walletConnectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_ID || 'c65a6cb1aa83c4e24500130f23a437d8'
+  const walletConnectProjectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_ID || 'c65a6cb1aa83c4e24500130f23a437d8'
 
   if (!projectAccessKey) {
     throw new Error('projectAccessKey is not defined');
@@ -40,12 +41,22 @@ const Providers = (props: { children: ReactNode }) => {
   //   throw new Error('appleRedirectURI is not defined');
   // }
 
-  if (!walletConnectId) {
-    throw new Error('walletConnectId is not defined');
+  if (!walletConnectProjectId) {
+    throw new Error('walletConnectProjectId is not defined');
   }
 
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
+  if (!isClient) return (
+    <div>
+      <p>loading...</p>
+    </div>
+  );
+
   const connectors = getDefaultWaasConnectors({
-    walletConnectProjectId: walletConnectId,
+    walletConnectProjectId,
     waasConfigKey,
     googleClientId,
     // Notice: AppleID will only work if deployed on https to support Apple redirects
