@@ -1,18 +1,28 @@
 "use client";
-import { useOpenConnectModal } from '@0xsequence/kit'
-import { useDisconnect, useAccount, useWalletClient, useSendTransaction } from 'wagmi'
+import { useOpenConnectModal } from "@0xsequence/kit";
+import {
+  useDisconnect,
+  useAccount,
+  useWalletClient,
+  useSendTransaction,
+} from "wagmi";
 import { CardButton } from "./components/CardButton";
 import { useEffect, useState } from "react";
 import { Box, Text } from "@0xsequence/design-system";
 import FullScreenLoading from "./components/FullScreenLoading/FullScreenLoading";
 
 const HomePage = () => {
-  const { setOpenConnectModal } = useOpenConnectModal()
-  const { isConnected, address } = useAccount()
-  const { disconnect } = useDisconnect()
-  const { data: walletClient } = useWalletClient()
-  const { data: txnData, sendTransaction, isPending: isPendingSendTxn, error } = useSendTransaction()
-  const [lastTransaction, setLastTransaction] = useState<string | null>(null)
+  const { setOpenConnectModal } = useOpenConnectModal();
+  const { isConnected, address } = useAccount();
+  const { disconnect } = useDisconnect();
+  const { data: walletClient } = useWalletClient();
+  const {
+    data: txnData,
+    sendTransaction,
+    isPending: isPendingSendTxn,
+    error,
+  } = useSendTransaction();
+  const [lastTransaction, setLastTransaction] = useState<string | null>(null);
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -21,38 +31,36 @@ const HomePage = () => {
 
   useEffect(() => {
     if (txnData) {
-      setLastTransaction(txnData)
-    };
-    if (error) console.error(error)
+      setLastTransaction(txnData);
+    }
+    if (error) console.error(error);
   }, [txnData, error]);
 
   const onClickConnect = () => {
-    setOpenConnectModal(true)
-  }
+    setOpenConnectModal(true);
+  };
 
   const onClickDisconnect = () => {
-    disconnect()
-  }
+    disconnect();
+  };
 
   const Connected = () => (
     <>
       <p>Connected with address: {address}</p>
       <div className="card">
-      <button onClick={onClickDisconnect}>Disconnect</button>
+        <button onClick={onClickDisconnect}>Disconnect</button>
       </div>
     </>
-  )
+  );
 
   const Disconnected = () => (
     <>
       <p>Not connected</p>
       <div className="card">
-        <button onClick={onClickConnect}>
-          Connect
-        </button>
+        <button onClick={onClickConnect}>Connect</button>
       </div>
     </>
-  )
+  );
 
   const runSendTransaction = async () => {
     if (!isConnected) {
@@ -86,11 +94,21 @@ const HomePage = () => {
       )}
       <footer className="homepage__footer">
         <Text>
-          Want to learn more? Read the <a href={"https://docs.sequence.xyz/solutions/wallets/sequence-kit/overview/"} target="_blank" rel="noreferrer ">docs</a>!
+          Want to learn more? Read the{" "}
+          <a
+            href={
+              "https://docs.sequence.xyz/solutions/wallets/sequence-kit/overview/"
+            }
+            target="_blank"
+            rel="noreferrer "
+          >
+            docs
+          </a>
+          !
         </Text>
       </footer>
     </div>
-  )
-}
+  );
+};
 
 export default HomePage;
