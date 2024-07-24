@@ -11,6 +11,7 @@ import {
   polygonAmoy,
   arbitrumSepolia,
 } from "wagmi/chains";
+import FullScreenLoading from "./components/FullScreenLoading/FullScreenLoading";
 
 const queryClient = new QueryClient();
 
@@ -66,12 +67,7 @@ const Providers = (props: { children: ReactNode }) => {
     setIsClient(true);
   }, []);
 
-  if (!isClient)
-    return (
-      <div>
-        <p>loading...</p>
-      </div>
-    );
+  if (!isClient) return <FullScreenLoading />;
 
   const connectors = getDefaultWaasConnectors({
     walletConnectProjectId,
