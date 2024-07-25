@@ -9,7 +9,6 @@ import {
 import { CardButton } from "./components/CardButton";
 import { useEffect, useState } from "react";
 import { Box, Text } from "@0xsequence/design-system";
-import FullScreenLoading from "./components/FullScreenLoading/FullScreenLoading";
 
 const HomePage = () => {
   const { setOpenConnectModal } = useOpenConnectModal();
@@ -23,11 +22,6 @@ const HomePage = () => {
     error,
   } = useSendTransaction();
   const [lastTransaction, setLastTransaction] = useState<string | null>(null);
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true);
-  }, []);
 
   useEffect(() => {
     if (txnData) {
@@ -71,8 +65,6 @@ const HomePage = () => {
 
     sendTransaction({ to: account, value: BigInt(0), gas: null });
   };
-
-  if (!isClient) return <FullScreenLoading />;
 
   return (
     <div>
