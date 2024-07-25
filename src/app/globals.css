@@ -110,4 +110,3 @@ button:focus-visible {
     animation: octocat-wave 560ms ease-in-out;
   }
 }
-@import "./components/FullScreenLoading/FullScreenLoading.module.css";
