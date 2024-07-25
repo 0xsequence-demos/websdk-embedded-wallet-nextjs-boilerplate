@@ -26,10 +26,10 @@ const Providers = (props: { children: ReactNode }) => {
   // Get your own keys on sequence.build
   const projectAccessKey =
     process.env.NEXT_PUBLIC_PROJECT_ACCESS_KEY ||
-    "AQAAAAAAAEGvyZiWA9FMslYeG_yayXaHnSI";
+    "AQAAAAAAAHjtb-N2keYpJkxfcHroYLjsFRE";
   const waasConfigKey =
     process.env.NEXT_PUBLIC_WAAS_CONFIG_KEY ||
-    "eyJwcm9qZWN0SWQiOjE2ODE1LCJlbWFpbFJlZ2lvbiI6ImNhLWNlbnRyYWwtMSIsImVtYWlsQ2xpZW50SWQiOiI2N2V2NXVvc3ZxMzVmcGI2OXI3NnJoYnVoIiwicnBjU2VydmVyIjoiaHR0cHM6Ly93YWFzLnNlcXVlbmNlLmFwcCJ9";
+    "eyJwcm9qZWN0SWQiOjMwOTU3LCJlbWFpbFJlZ2lvbiI6ImNhLWNlbnRyYWwtMSIsImVtYWlsQ2xpZW50SWQiOiI2aG10MWJmb2ZjZGUxdGZsaGhjZ25zZm0yYiIsInJwY1NlcnZlciI6Imh0dHBzOi8vd2Fhcy5zZXF1ZW5jZS5hcHAifQ==";
   const googleClientId =
     process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID ||
     "970987756660-35a6tc48hvi8cev9cnknp0iugv9poa23.apps.googleusercontent.com";
