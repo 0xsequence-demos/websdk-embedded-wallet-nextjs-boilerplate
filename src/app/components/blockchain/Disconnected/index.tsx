@@ -1,3 +1,3 @@
-import Disconnected from "./Disconnected";
+import NotConnected from "./Disconnected";
 
-export default Disconnected;
+export default NotConnected;

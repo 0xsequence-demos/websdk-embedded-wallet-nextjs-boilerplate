@@ -7,7 +7,7 @@ import ActiveNetwork from "./components/blockchain/ActiveNetwork";
 import ChainEnvironment from "./components/blockchain/ChainEnvironment";
 import NativeBalance from "./components/blockchain/NativeBalance";
 import Connected from "./components/blockchain/Connected";
-import Disconnected from "./components/blockchain/Disconnected";
+import NotConnected from "./components/blockchain/Disconnected";
 
 const HomePage = () => {
   const { isConnected, chain } = useAccount();
@@ -56,7 +56,7 @@ const HomePage = () => {
     <div>
       <h1>Sequence Kit Starter - Nextjs</h1>
       <h2 className="homepage__marginBtNormal">Embedded Wallet</h2>
-      {isConnected ? <DefaultConnectedUI /> : <Disconnected />}
+      {isConnected ? <DefaultConnectedUI /> : <NotConnected />}
       {isConnected && (
         <CardButton
           title="Send transaction"
