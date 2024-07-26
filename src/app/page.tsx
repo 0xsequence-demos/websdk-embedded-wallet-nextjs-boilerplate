@@ -8,12 +8,12 @@ import {
 } from "wagmi";
 import { CardButton } from "./components/CardButton";
 import { useEffect, useState } from "react";
-import { Box, Text } from "@0xsequence/design-system";
+import { Box, Text, NetworkImage } from "@0xsequence/design-system";
 import FullScreenLoading from "./components/FullScreenLoading/FullScreenLoading";
 
 const HomePage = () => {
   const { setOpenConnectModal } = useOpenConnectModal();
-  const { isConnected, address } = useAccount();
+  const { isConnected, address, chain } = useAccount();
   const { disconnect } = useDisconnect();
   const { data: walletClient } = useWalletClient();
   const {
@@ -46,7 +46,24 @@ const HomePage = () => {
 
   const Connected = () => (
     <>
-      <p>Connected with address: {address}</p>
+      <Text variant="large" fontWeight="bold" color="text100">Connected with address: {address}</Text>
+      {chain && (
+        <Box>
+          <Box display="flex" justifyContent="space-between">
+            <Box display="flex" gap="2" justifyContent="center">
+              <Text variant="large" fontWeight="bold" color="text100">Network: </Text>
+              <Box display="flex" gap="1" justifyContent="center">
+                <NetworkImage chainId={chain.id}/>
+                <Text variant="large" fontWeight="bold" color="text100"> {chain.name}</Text>
+              </Box>
+            </Box>
+            <Text variant="large" fontWeight="bold" color="text100">Tesnet: {chain.testnet?.toString()}</Text>
+          </Box>
+          <Box display="flex">
+            <Text variant="large" fontWeight="bold" color="text100">{chain.nativeCurrency.name} balance: (Coming Soon)</Text>
+          </Box>
+        </Box>
+      )}
       <div className="card">
         <button onClick={onClickDisconnect}>Disconnect</button>
       </div>
@@ -77,7 +94,7 @@ const HomePage = () => {
   return (
     <div>
       <h1>Sequence Kit Starter - Nextjs</h1>
-      <h2>Embedded Wallet</h2>
+      <h2 className="homepage__marginBtNormal">Embedded Wallet</h2>
       {isConnected ? <Connected /> : <Disconnected />}
       {isConnected && (
         <CardButton
