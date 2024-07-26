@@ -40,21 +40,32 @@ const HomePage = () => {
 
   const Connected = () => (
     <>
-      <Text variant="large" fontWeight="bold" color="text100">Connected with address: {address}</Text>
+      <Text variant="large" fontWeight="bold" color="text100">
+        Connected with address: {address}
+      </Text>
       {chain && (
         <Box>
           <Box display="flex" justifyContent="space-between">
             <Box display="flex" gap="2" justifyContent="center">
-              <Text variant="large" fontWeight="bold" color="text100">Network: </Text>
+              <Text variant="large" fontWeight="bold" color="text100">
+                Network:{" "}
+              </Text>
               <Box display="flex" gap="1" justifyContent="center">
-                <NetworkImage chainId={chain.id}/>
-                <Text variant="large" fontWeight="bold" color="text100"> {chain.name}</Text>
+                <NetworkImage chainId={chain.id} />
+                <Text variant="large" fontWeight="bold" color="text100">
+                  {" "}
+                  {chain.name}
+                </Text>
               </Box>
             </Box>
-            <Text variant="large" fontWeight="bold" color="text100">Tesnet: {chain.testnet?.toString()}</Text>
+            <Text variant="large" fontWeight="bold" color="text100">
+              Tesnet: {chain.testnet?.toString()}
+            </Text>
           </Box>
           <Box display="flex">
-            <Text variant="large" fontWeight="bold" color="text100">{chain.nativeCurrency.name} balance: (Coming Soon)</Text>
+            <Text variant="large" fontWeight="bold" color="text100">
+              {chain.nativeCurrency.name} balance: (Coming Soon)
+            </Text>
           </Box>
         </Box>
       )}
