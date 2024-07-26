@@ -11,7 +11,7 @@ import {
   polygonAmoy,
   arbitrumSepolia,
 } from "wagmi/chains";
-import FullScreenLoading from "./components/FullScreenLoading/FullScreenLoading";
+import FullScreenLoading from "./components/FullScreenLoading";
 
 const queryClient = new QueryClient();
 

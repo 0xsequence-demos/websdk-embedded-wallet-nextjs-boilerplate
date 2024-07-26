@@ -1,19 +1,16 @@
 "use client";
-import { useOpenConnectModal } from "@0xsequence/kit";
-import {
-  useDisconnect,
-  useAccount,
-  useWalletClient,
-  useSendTransaction,
-} from "wagmi";
-import { CardButton } from "./components/CardButton";
+import { useAccount, useWalletClient, useSendTransaction } from "wagmi";
+import CardButton from "./components/CardButton";
 import { useEffect, useState } from "react";
-import { Box, Text, NetworkImage } from "@0xsequence/design-system";
+import { Box, Text } from "@0xsequence/design-system";
+import ActiveNetwork from "./components/blockchain/ActiveNetwork";
+import ChainEnvironment from "./components/blockchain/ChainEnvironment";
+import NativeBalance from "./components/blockchain/NativeBalance";
+import Connected from "./components/blockchain/Connected";
+import Disconnected from "./components/blockchain/Disconnected";
 
 const HomePage = () => {
-  const { setOpenConnectModal } = useOpenConnectModal();
-  const { isConnected, address, chain } = useAccount();
-  const { disconnect } = useDisconnect();
+  const { isConnected, chain } = useAccount();
   const { data: walletClient } = useWalletClient();
   const {
     data: txnData,
@@ -30,57 +27,18 @@ const HomePage = () => {
     if (error) console.error(error);
   }, [txnData, error]);
 
-  const onClickConnect = () => {
-    setOpenConnectModal(true);
-  };
-
-  const onClickDisconnect = () => {
-    disconnect();
-  };
-
-  const Connected = () => (
+  const DefaultConnectedUI = () => (
     <>
-      <Text variant="large" fontWeight="bold" color="text100">
-        Connected with address: {address}
-      </Text>
+      <Connected />
       {chain && (
-        <Box>
+        <Box marginBottom="8">
           <Box display="flex" justifyContent="space-between">
-            <Box display="flex" gap="2" justifyContent="center">
-              <Text variant="large" fontWeight="bold" color="text100">
-                Network:{" "}
-              </Text>
-              <Box display="flex" gap="1" justifyContent="center">
-                <NetworkImage chainId={chain.id} />
-                <Text variant="large" fontWeight="bold" color="text100">
-                  {" "}
-                  {chain.name}
-                </Text>
-              </Box>
-            </Box>
-            <Text variant="large" fontWeight="bold" color="text100">
-              Tesnet: {chain.testnet?.toString()}
-            </Text>
+            <ActiveNetwork />
+            <ChainEnvironment />
           </Box>
-          <Box display="flex">
-            <Text variant="large" fontWeight="bold" color="text100">
-              {chain.nativeCurrency.name} balance: (Coming Soon)
-            </Text>
-          </Box>
+          <NativeBalance />
         </Box>
       )}
-      <div className="card">
-        <button onClick={onClickDisconnect}>Disconnect</button>
-      </div>
-    </>
-  );
-
-  const Disconnected = () => (
-    <>
-      <p>Not connected</p>
-      <div className="card">
-        <button onClick={onClickConnect}>Connect</button>
-      </div>
     </>
   );
 
@@ -98,7 +56,7 @@ const HomePage = () => {
     <div>
       <h1>Sequence Kit Starter - Nextjs</h1>
       <h2 className="homepage__marginBtNormal">Embedded Wallet</h2>
-      {isConnected ? <Connected /> : <Disconnected />}
+      {isConnected ? <DefaultConnectedUI /> : <Disconnected />}
       {isConnected && (
         <CardButton
           title="Send transaction"

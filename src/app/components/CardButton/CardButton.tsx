@@ -8,7 +8,7 @@ interface CardButtonProps {
   isPending?: boolean;
 }
 
-export const CardButton = (props: CardButtonProps) => {
+const CardButton = (props: CardButtonProps) => {
   const { title, description, onClick, isPending } = props;
 
   return (
@@ -31,3 +31,5 @@ export const CardButton = (props: CardButtonProps) => {
     </Card>
   );
 };
+
+export default CardButton;
