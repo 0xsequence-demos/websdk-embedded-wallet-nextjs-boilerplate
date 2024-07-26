@@ -2,8 +2,8 @@ import { Box, Text } from "@0xsequence/design-system";
 import { useAccount, useDisconnect } from "wagmi";
 import ActiveNetwork from "../ActiveNetwork";
 import ChainEnvironment from "../ChainEnvironment";
-import TestSendTransaction from "../../Transactions";
 import NativeBalance from "../NativeBalance";
+import TestSendTransaction from "./TestSendTransaction";
 
 const Connected = () => {
   const { address, chain } = useAccount();
