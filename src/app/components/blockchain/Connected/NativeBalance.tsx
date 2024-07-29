@@ -3,10 +3,11 @@ import { Chain } from "viem";
 import { useAccount } from "wagmi";
 
 const NativeBalance = (props: { chain: Chain }) => {
+  const { chain } = props;
   return (
     <Box display="flex">
       <Text variant="large" fontWeight="bold" color="text100">
-        {props.chain.nativeCurrency.name} balance: (Coming Soon)
+        {chain.nativeCurrency.name} balance: (Coming Soon)
       </Text>
     </Box>
   );
