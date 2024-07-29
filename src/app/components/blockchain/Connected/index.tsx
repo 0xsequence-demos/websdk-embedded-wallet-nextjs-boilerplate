@@ -17,7 +17,7 @@ const Connected = () => {
       <div className="card">
         <button onClick={onClickDisconnect}>Disconnect</button>
       </div>
-      {chain && address && <ChainInfo chain={chain} />}
+      {chain && <ChainInfo chain={chain} />}
       <TestSendTransaction />
     </>
   );
