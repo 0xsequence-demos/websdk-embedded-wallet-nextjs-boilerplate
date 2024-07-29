@@ -1,6 +1,5 @@
 import { Box, Text } from "@0xsequence/design-system";
 import { Chain } from "viem";
-import { useAccount } from "wagmi";
 
 const NativeBalance = (props: { chain: Chain }) => {
   const { chain } = props;
