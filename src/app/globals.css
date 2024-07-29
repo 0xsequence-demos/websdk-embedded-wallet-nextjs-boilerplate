@@ -111,4 +111,12 @@ button:focus-visible {
   }
 }
 
+.margin-left-auto {
+  margin-left: auto;
+}
+
+.break-word {
+  word-break: break-word;
+}
+
 @import "./components/FullScreenLoading/style.css";
