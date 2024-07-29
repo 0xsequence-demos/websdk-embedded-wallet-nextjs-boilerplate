@@ -1,6 +1,6 @@
 import { useOpenConnectModal } from "@0xsequence/kit";
 
-const Disconnected = () => {
+const NotConnected = () => {
   const { setOpenConnectModal } = useOpenConnectModal();
   const onClickConnect = () => {
     setOpenConnectModal(true);
@@ -16,4 +16,4 @@ const Disconnected = () => {
   );
 };
 
-export default Disconnected;
+export default NotConnected;
