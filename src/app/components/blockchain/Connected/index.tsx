@@ -3,7 +3,7 @@ import { useAccount } from "wagmi";
 import TestSendTransaction from "./TestSendTransaction";
 import Disconnect from "./Disconnect";
 import ChainInfo from "./ChainInfo";
-import SignMessage from "./SignMessage";
+import TestSignMessage from "./TestSignMessage";
 
 const Connected = () => {
   const { address, chain } = useAccount();
@@ -15,7 +15,7 @@ const Connected = () => {
       <Disconnect />
       {chain && <ChainInfo chain={chain} />}
       <Box display="flex" flexDirection="column" gap="4">
-        <SignMessage />
+        <TestSignMessage />
         <TestSendTransaction />
       </Box>
     </>

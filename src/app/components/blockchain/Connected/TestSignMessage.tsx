@@ -10,7 +10,7 @@ import {
   TextInput,
 } from "@0xsequence/design-system";
 
-const SignMessage = () => {
+const TestSignMessage = () => {
   const [message, setMessage] = useState<string>();
   const { isPending, data, signMessage: signMessageHook } = useSignMessage();
   const [textCopied, setTextCopied] = useState<boolean>(false);
@@ -95,4 +95,4 @@ const SignMessage = () => {
   );
 };
 
-export default SignMessage;
+export default TestSignMessage;
