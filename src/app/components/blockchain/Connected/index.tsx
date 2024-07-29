@@ -1,9 +1,7 @@
-import { Box, Text } from "@0xsequence/design-system";
+import { Text } from "@0xsequence/design-system";
 import { useAccount, useDisconnect } from "wagmi";
-import ActiveNetwork from "./ActiveNetwork";
-import ChainEnvironment from "./ChainEnvironment";
-import NativeBalance from "./NativeBalance";
 import TestSendTransaction from "./TestSendTransaction";
+import ChainInfo from "./ChainInfo";
 
 const Connected = () => {
   const { address, chain } = useAccount();
@@ -19,15 +17,7 @@ const Connected = () => {
       <div className="card">
         <button onClick={onClickDisconnect}>Disconnect</button>
       </div>
-      {chain && (
-        <Box marginBottom="8">
-          <Box display="flex" justifyContent="space-between">
-            <ActiveNetwork />
-            <ChainEnvironment />
-          </Box>
-          <NativeBalance />
-        </Box>
-      )}
+      {chain && address && <ChainInfo chain={chain} />}
       <TestSendTransaction />
     </>
   );

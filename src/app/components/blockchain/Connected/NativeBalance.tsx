@@ -1,20 +1,13 @@
 import { Box, Text } from "@0xsequence/design-system";
+import { Chain } from "viem";
 import { useAccount } from "wagmi";
 
-const NativeBalance = () => {
-  const { chain, address } = useAccount();
-
+const NativeBalance = (props: { chain: Chain }) => {
   return (
     <Box display="flex">
-      {chain && address ? (
-        <Text variant="large" fontWeight="bold" color="text100">
-          {chain.nativeCurrency.name} balance: (Coming Soon)
-        </Text>
-      ) : (
-        <Text variant="large" fontWeight="bold" color="text100">
-          User not connected
-        </Text>
-      )}
+      <Text variant="large" fontWeight="bold" color="text100">
+        {props.chain.nativeCurrency.name} balance: (Coming Soon)
+      </Text>
     </Box>
   );
 };

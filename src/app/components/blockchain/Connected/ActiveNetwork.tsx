@@ -1,29 +1,21 @@
 import { Box, NetworkImage, Text } from "@0xsequence/design-system";
-import { useAccount } from "wagmi";
+import { Chain } from "viem";
 
-const ActiveNetwork = () => {
-  const { chain } = useAccount();
-
+const ActiveNetwork = (props: { chain: Chain }) => {
   return (
     <Box display="flex" gap="2" justifyContent="center">
-      {chain ? (
-        <Box display="flex" gap="3">
-          <Text variant="large" fontWeight="bold" color="text100">
-            Network:{" "}
-          </Text>
-          <Box display="flex" gap="1" justifyContent="center">
-            <NetworkImage chainId={chain.id} />
-            <Text variant="large" fontWeight="bold" color="text100">
-              {" "}
-              {chain.name}
-            </Text>
-          </Box>
-        </Box>
-      ) : (
+      <Box display="flex" gap="3">
         <Text variant="large" fontWeight="bold" color="text100">
-          User not connected
+          Network:{" "}
         </Text>
-      )}
+        <Box display="flex" gap="1" justifyContent="center">
+          <NetworkImage chainId={props.chain.id} />
+          <Text variant="large" fontWeight="bold" color="text100">
+            {" "}
+            {props.chain.name}
+          </Text>
+        </Box>
+      </Box>
     </Box>
   );
 };

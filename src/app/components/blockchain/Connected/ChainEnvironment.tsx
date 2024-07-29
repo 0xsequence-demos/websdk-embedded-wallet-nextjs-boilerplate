@@ -1,24 +1,16 @@
 import { Box, Text } from "@0xsequence/design-system";
-import { useAccount } from "wagmi";
+import { Chain } from "viem";
 
-const ChainEnvironment = () => {
-  const { chain } = useAccount();
-
+const ChainEnvironment = (props: { chain: Chain }) => {
   return (
     <Box display="flex" gap="2" justifyContent="center">
-      {chain ? (
-        <Box>
-          <Box display="flex" justifyContent="space-between">
-            <Text variant="large" fontWeight="bold" color="text100">
-              Tesnet: {chain.testnet?.toString()}
-            </Text>
-          </Box>
+      <Box>
+        <Box display="flex" justifyContent="space-between">
+          <Text variant="large" fontWeight="bold" color="text100">
+            Tesnet: {props.chain.testnet?.toString()}
+          </Text>
         </Box>
-      ) : (
-        <Text variant="large" fontWeight="bold" color="text100">
-          User not connected
-        </Text>
-      )}
+      </Box>
     </Box>
   );
 };
