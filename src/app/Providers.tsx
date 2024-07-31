@@ -15,12 +15,13 @@ import FullScreenLoading from "./components/FullScreenLoading";
 
 const queryClient = new QueryClient();
 
+export const chains = [mainnet, polygon, polygonAmoy, arbitrumSepolia] as [
+  Chain,
+  ...Chain[],
+];
+
 const Providers = (props: { children: ReactNode }) => {
   const { children } = props;
-  const chains = [mainnet, polygon, polygonAmoy, arbitrumSepolia] as [
-    Chain,
-    ...Chain[],
-  ];
   const [isClient, setIsClient] = useState(false);
 
   // Get your own keys on sequence.build
