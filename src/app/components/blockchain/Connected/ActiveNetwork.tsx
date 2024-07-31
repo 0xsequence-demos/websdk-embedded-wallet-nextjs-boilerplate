@@ -4,7 +4,7 @@ import { Chain } from "viem";
 const ActiveNetwork = (props: { chain: Chain }) => {
   const { chain } = props;
   return (
-    <Box display="flex" gap="2" justifyContent="center">
+    <Box display="flex" gap="2">
       <Box display="flex" gap="3">
         <Text variant="large" fontWeight="bold" color="text100">
           Network:{" "}

@@ -8,10 +8,7 @@ const ChainInfo = (props: { chain: Chain }) => {
   const { chain } = props;
   return (
     <Box marginBottom="8">
-      <Box display="flex" justifyContent="space-between">
-        <ActiveNetwork chain={chain} />
-        <ChainEnvironment chain={chain} />
-      </Box>
+      <ActiveNetwork chain={chain} />
       <NativeBalance chain={chain} />
     </Box>
   );
