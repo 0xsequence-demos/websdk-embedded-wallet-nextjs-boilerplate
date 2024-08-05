@@ -15,13 +15,6 @@ import FullScreenLoading from "./components/FullScreenLoading";
 
 const queryClient = new QueryClient();
 
-export const INDEXER_SUPPORTED_NETWORKS = [
-  { ...mainnet, name: "mainnet" },
-  { ...polygonAmoy, name: "amoy" },
-  { ...polygon, name: "polygon" },
-  { ...arbitrumSepolia, name: "arbitrum-sepolia" },
-];
-
 export const chains = [mainnet, polygon, polygonAmoy, arbitrumSepolia] as [
   Chain,
   ...Chain[],
