@@ -120,3 +120,4 @@ button:focus-visible {
 }
 
 @import "./components/FullScreenLoading/style.css";
+@import "./components/ErrorToast/style.css";

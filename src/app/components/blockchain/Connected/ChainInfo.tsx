@@ -6,7 +6,7 @@ import SwitchNetwork from "./SwitchNetwork";
 
 const ChainInfo = (props: { chain: Chain; address: Address }) => {
   const { chain, address } = props;
-  
+
   return (
     <Box marginBottom="8">
       <Box
