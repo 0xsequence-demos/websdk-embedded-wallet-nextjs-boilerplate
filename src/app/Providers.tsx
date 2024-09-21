@@ -1,5 +1,6 @@
 "use client";
 import { getDefaultWaasConnectors, KitProvider } from "@0xsequence/kit";
+
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ReactNode, useEffect, useState } from "react";
 import { createConfig, http, WagmiProvider } from "wagmi";
@@ -11,6 +12,7 @@ import {
   polygonAmoy,
 } from "wagmi/chains";
 import FullScreenLoading from "./components/FullScreenLoading";
+import "@0xsequence/design-system/styles.css";
 
 const queryClient = new QueryClient();
 
