@@ -2,7 +2,7 @@ import { Box, Text } from "@0xsequence/design-system";
 import React, { useEffect, useState } from "react";
 import { Chain } from "viem";
 import { useAccount, useSendTransaction, useWalletClient } from "wagmi";
-import { chains } from "../../../../../app/Providers";
+import { chains } from "../../../../../chains";
 import CardButton from "../../../CardButton";
 import ErrorToast from "../../../ErrorToast";
 
