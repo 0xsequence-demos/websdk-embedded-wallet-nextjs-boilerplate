@@ -1,14 +1,14 @@
 import { Box, Text } from "@0xsequence/design-system";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Chain } from "viem";
-import { useAccount, useSendTransaction, useWalletClient } from "wagmi";
-import { chains } from "../../../../../chains";
-import CardButton from "../../../CardButton";
-import ErrorToast from "../../../ErrorToast";
+import { useSendTransaction, useWalletClient } from "wagmi";
+import CardButton from "./CardButton";
+import ErrorToast from "./ErrorToast";
+import chains from "../constants";
 
-const TestSendTransaction = () => {
+const TestSendTransaction = (props: { chainId: number }) => {
   const { data: walletClient } = useWalletClient();
-  const { chainId } = useAccount();
+  const { chainId } = props;
   const [network, setNetwork] = useState<Chain | null>(null);
   const {
     data: txnData,
@@ -27,7 +27,6 @@ const TestSendTransaction = () => {
   }, [txnData, error]);
 
   useEffect(() => {
-    if (!chainId) return;
     const chainResult = chains.find((chain) => chain.id === chainId);
     if (chainResult) {
       setNetwork(chainResult);
@@ -54,6 +53,7 @@ const TestSendTransaction = () => {
             <a
               target="_blank"
               href={`${network?.blockExplorers?.default?.url}/tx/${lastTransaction}`}
+              rel="noreferrer"
             >
               Click to view on {network?.name}
             </a>

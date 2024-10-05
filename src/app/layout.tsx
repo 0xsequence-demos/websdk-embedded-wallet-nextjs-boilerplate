@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import { SequenceKit } from "@0xsequence/kit";
 import "./globals.css";
 import "@0xsequence/design-system/styles.css";

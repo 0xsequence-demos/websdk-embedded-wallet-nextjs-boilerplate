@@ -6,7 +6,7 @@ import {
   Text,
   TextInput,
 } from "@0xsequence/design-system";
-import React, { ChangeEvent, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Address, Signature } from "viem";
 import { usePublicClient } from "wagmi";
 
@@ -89,7 +89,7 @@ const TestVerifyMessage = (props: { chainId: number }) => {
             disabled={validatingSignature}
             className="margin-left-auto"
           >
-            Sign
+            Verify
           </button>
         </Box>
         <Card>
