@@ -1,10 +1,10 @@
 import {
+  arbitrumSepolia,
+  Chain,
+  immutableZkEvmTestnet,
   mainnet,
   polygon,
-  Chain,
   polygonAmoy,
-  arbitrumSepolia,
-  immutableZkEvmTestnet,
 } from "wagmi/chains";
 
 const chains = [
