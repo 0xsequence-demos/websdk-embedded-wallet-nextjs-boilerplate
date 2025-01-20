@@ -1,71 +1,121 @@
-import { Box, Text } from "@0xsequence/design-system";
-import { useEffect, useState } from "react";
 import { Chain } from "viem";
 import { useSendTransaction, useWalletClient } from "wagmi";
-import CardButton from "./CardButton";
-import ErrorToast from "./ErrorToast";
 import chains from "../constants";
+import {
+  Button,
+  Card,
+  Form,
+  FormHandler,
+  useStoreData,
+} from "boilerplate-design-system";
+
+interface TxnRespose {
+  hash: string;
+  network: Chain;
+  error?: string;
+  message?: string;
+}
 
 const TestSendTransaction = (props: { chainId: number }) => {
   const { data: walletClient } = useWalletClient();
   const { chainId } = props;
-  const [network, setNetwork] = useState<Chain | null>(null);
-  const {
-    data: txnData,
-    sendTransaction,
-    isPending: isPendingSendTxn,
-    error,
-    reset,
-  } = useSendTransaction();
-  const [lastTransaction, setLastTransaction] = useState<string | null>(null);
+  const { sendTransactionAsync, isPending } = useSendTransaction();
 
-  useEffect(() => {
-    if (txnData) {
-      setLastTransaction(txnData);
-    }
-    if (error) console.error(error);
-  }, [txnData, error]);
+  // Get chain information using chainId
+  const network = chains.find((chain) => chain.id === chainId);
 
-  useEffect(() => {
-    const chainResult = chains.find((chain) => chain.id === chainId);
-    if (chainResult) {
-      setNetwork(chainResult);
-    }
-  }, [chainId]);
-
-  const runSendTransaction = async () => {
+  const handleSendTransaction: FormHandler = async () => {
     const [account] = await walletClient!.getAddresses();
-    // The gas limit defines the maximum amount of gas that can be used for a transaction.
-    // If the transaction requires more gas than the set limit, it will fail.
-    // Posible sendTransaction values: { to: account, value: BigInt(0), gas: null }
-    sendTransaction({ to: account, value: BigInt(0) });
+    try {
+      const hash = await sendTransactionAsync({
+        to: account,
+        value: BigInt(0),
+        gas: null,
+      });
+
+      return { data: { hash, network }, persist: true };
+    } catch (e) {
+      const error = e as Error;
+      return {
+        data: {
+          error: "Unsuccessful transaction",
+          message: error.message,
+          hash: null,
+          network,
+        },
+        persist: true,
+      };
+    }
   };
+
+  const values = useStoreData<TxnRespose>("sendTransaction");
+
+  const isTxnValid = values && values.hash && values.network;
+  const isTxnInvalid =
+    values && values.hash === null && values.network && values.error;
 
   return (
     <>
-      <CardButton
-        title="Send transaction"
-        description="Send a transaction with your wallet"
-        isPending={isPendingSendTxn}
-        onClick={runSendTransaction}
-      />
-      {lastTransaction && (
-        <Box display="flex" flexDirection="column" gap="4">
-          <Text>Last transaction hash: {lastTransaction}</Text>
-          <button>
-            <a
-              target="_blank"
-              href={`${network?.blockExplorers?.default?.url}/tx/${lastTransaction}`}
-              rel="noreferrer"
-            >
-              Click to view on {network?.name}
-            </a>
-          </button>
-        </Box>
-      )}
-      {error && (
-        <ErrorToast message={error?.message} onClose={reset} duration={7000} />
-      )}
+      <Card className="flex flex-col gap-4">
+        <div>
+          <span className="text-17">Send transaction on {network?.name}</span>
+          <p className="text-14 text-grey-100">
+            Send a transaction with your wallet
+          </p>
+        </div>
+
+        <Form name="sendTransaction" onAction={handleSendTransaction}>
+          <Button
+            type="submit"
+            variant="primary"
+            subvariants={{ padding: "comfortable" }}
+            className="self-start disabled:opacity-50 contents-layered"
+            disabled={isPending}
+          >
+            <span data-visible={!isPending}>Send Test Transaction</span>
+            <span data-visible={isPending}>Sending...</span>
+          </Button>
+        </Form>
+      </Card>
+
+      {isTxnInvalid ? (
+        <Card className="flex flex-col gap-4">
+          <dl className="flex flex-col gap-4">
+            <div className="flex flex-col">
+              <dt className="text-14 text-grey-100">
+                Last transaction ({values.network.name})
+              </dt>
+              <dd className="w-full break-words font-mono text-13 ">
+                Error: {values.error}
+                <p className="mt-4 text-12">{values.message}</p>
+              </dd>
+            </div>
+          </dl>
+        </Card>
+      ) : null}
+
+      {isTxnValid ? (
+        <Card className="flex flex-col gap-4">
+          <dl className="flex flex-col gap-4">
+            <div className="flex flex-col">
+              <dt className="text-14 text-grey-100">
+                Last transaction ({values.network.name})
+              </dt>
+              <dd className="w-full break-words font-mono text-13 ">
+                Hash: {values.hash}
+              </dd>
+            </div>
+          </dl>
+          <a
+            target="_blank"
+            href={`${values?.network?.blockExplorers?.default?.url}/tx/${values.hash}`}
+            rel="noreferrer noopener"
+            className="underline text-14"
+          >
+            View on {values?.network?.name}
+          </a>
+        </Card>
+      ) : null}
     </>
   );
 };

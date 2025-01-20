@@ -11,7 +11,7 @@ const walletConnectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_ID;
 
 export const config: any = createConfig("waas", {
   projectAccessKey: projectAccessKey,
-  chainIds: [1, 421614, 13473],
+  chainIds: [1, 421614], // 13473 Not supported by sequence error
   defaultChainId: 421614,
   appName: "Kit Starter",
   waasConfigKey: waasConfigKey,

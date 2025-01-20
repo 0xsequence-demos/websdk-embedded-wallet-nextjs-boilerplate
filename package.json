@@ -16,10 +16,12 @@
     "@0xsequence/kit": "^4.4.4",
     "@0xsequence/network": "^2.0.26",
     "@tanstack/react-query": "^5.61.0",
+    "boilerplate-design-system": "file:../boilerplate-design-system",
     "ethers": "6.13.3",
     "next": "14.2.14",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "sonner": "^1.7.2",
     "viem": "^2.21.48",
     "wagmi": "^2.13.0"
   },
@@ -29,12 +31,15 @@
     "@types/react-dom": "^18.3.1",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
     "@typescript-eslint/parser": "^7.18.0",
+    "autoprefixer": "^10.4.20",
     "eslint": "^8.57.1",
     "eslint-config-next": "14.2.14",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-unused-imports": "^4.1.4",
+    "postcss": "^8.5.1",
     "prettier": "^3.3.3",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5.6.3"
   },
   "packageManager": "pnpm@9.5.0+sha512.140036830124618d624a2187b50d04289d5a087f326c9edfc0ccd733d76c4f52c3a313d4fc148794a2a9d81553016004e6742e8cf850670268a7387fc220c903"
