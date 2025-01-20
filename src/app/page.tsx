@@ -11,9 +11,10 @@ const Home = () => {
 
   return (
     <SequenceBoilerplate
-      githubUrl="https://github.com/0xsequence-demos/kit-embedded-wallet-react-boilerplate"
-      name="Sequence Kit Starter - React"
+      githubUrl="https://github.com/0xsequence-demos/kit-embedded-wallet-nextjs-boilerplate"
+      name="Sequence Kit Starter - Nextjs"
       description="Embedded Wallet"
+      docsUrl="https://docs.sequence.xyz/solutions/wallets/sequence-kit/overview/"
     >
       {isConnected ? <MainConnected /> : <Connector />}
     </SequenceBoilerplate>

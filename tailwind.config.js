@@ -223,21 +223,15 @@ module.exports = {
       fontSize: [
         10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 22, 24, 26, 28, 30, 32, 34,
         36, 38, 40, 42, 44, 46, 48,
-      ].reduce(
-        (
-          acc: Record<number, [string, Record<string, string>]>,
-          key: number,
-        ) => {
-          acc[key] = [
-            `calc(${key / 16}rem * var(--font-size-multiplier, 1))`,
-            {
-              letterSpacing: "1%",
-            },
-          ];
-          return acc;
-        },
-        {},
-      ),
+      ].reduce((acc, key) => {
+        acc[key] = [
+          `calc(${key / 16}rem * var(--font-size-multiplier, 1))`,
+          {
+            letterSpacing: "1%",
+          },
+        ];
+        return acc;
+      }, {}),
     },
   },
   plugins: [],

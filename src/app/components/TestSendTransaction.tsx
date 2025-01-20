@@ -24,13 +24,18 @@ const TestSendTransaction = (props: { chainId: number }) => {
   // Get chain information using chainId
   const network = chains.find((chain) => chain.id === chainId);
 
+  console.log(network);
+
   const handleSendTransaction: FormHandler = async () => {
     const [account] = await walletClient!.getAddresses();
+
+    console.log(account);
+
     try {
       const hash = await sendTransactionAsync({
         to: account,
         value: BigInt(0),
-        gas: null,
+        // gas: null,
       });
 
       return { data: { hash, network }, persist: true };
