@@ -1,20 +1,20 @@
-import { useAccount, useDisconnect } from "wagmi";
-import TestSignMessage from "../components/TestSignMessage";
 import TestVerifyMessage from "../components/TestVerifyMessage";
 import TestSendTransaction from "../components/TestSendTransaction";
 import { NetworkSwitchInputSelect } from "../components/NetworkSwitchInputSelect";
+import TestSignMessage from "../components/TestSignMessage";
 
 import {
+  Card,
+  Divider,
   Field,
   Group,
-  Card,
-  SegmentedInput,
   Input,
   Label,
-  Divider,
+  SegmentedInput,
   ShowAddressWithDisconnect,
 } from "boilerplate-design-system";
 import { useNativeBalance } from "../components/NativeBalance";
+import { useAccount, useDisconnect } from "wagmi";
 
 const MainConnected = () => {
   const { address, chain, chainId } = useAccount();

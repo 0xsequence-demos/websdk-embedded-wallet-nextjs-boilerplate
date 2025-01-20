@@ -1,15 +1,15 @@
 import {
-  Form,
   Button,
-  InputText,
   Card,
-  useStoreData,
+  Form,
+  type FormHandler,
+  InputText,
   setStoreData,
   useForm,
+  useStoreData,
 } from "boilerplate-design-system";
 import { useAccount, useSignMessage } from "wagmi";
 import { SignableMessage } from "viem";
-import type { FormHandler } from "boilerplate-design-system";
 import { z } from "zod";
 
 const schemaSignMessage = z.object({

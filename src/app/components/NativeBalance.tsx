@@ -9,11 +9,6 @@ export const useNativeBalance = (props: {
   address?: Address;
 }) => {
   const { chain, address } = props;
-
-  if (!chain || !address) {
-    return undefined;
-  }
-
   const [balance, setBalance] = useState<string | undefined>();
 
   useEffect(() => {
@@ -41,5 +36,8 @@ export const useNativeBalance = (props: {
     loadNativeNetworkBalance(chain.id).then(() => console.log("Done"));
   }, [address, chain]);
 
+  if (!chain || !address) {
+    return undefined;
+  }
   return balance || "loading...";
 };

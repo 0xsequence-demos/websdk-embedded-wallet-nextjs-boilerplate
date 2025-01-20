@@ -23,7 +23,8 @@
     "react-dom": "^18.3.1",
     "sonner": "^1.7.2",
     "viem": "^2.21.48",
-    "wagmi": "^2.13.0"
+    "wagmi": "^2.13.0",
+    "zod": "^3.24.1"
   },
   "devDependencies": {
     "@types/node": "^22.9.1",

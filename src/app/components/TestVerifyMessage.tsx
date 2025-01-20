@@ -1,23 +1,23 @@
 import { Spinner } from "@0xsequence/design-system";
 import {
-  Form,
   Button,
+  Card,
   Field,
+  FieldError,
+  Form,
+  FormErrors,
+  type FormHandler,
   Input,
   Label,
-  Card,
-  FormErrors,
-  FieldError,
-  Svg,
-  useStoreData,
   setStoreData,
+  Svg,
   useForm,
+  useStoreData,
 } from "boilerplate-design-system";
 
 import { usePublicClient } from "wagmi";
 import { z } from "zod";
 // import { type Signature } from "viem";
-import type { FormHandler } from "boilerplate-design-system";
 // Define Hex as a string with a hex pattern
 const Hex = z.string().regex(/^0x[0-9a-fA-F]+$/, "Invalid hex format");
 
