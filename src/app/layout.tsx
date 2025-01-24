@@ -2,7 +2,6 @@
 import { SequenceKit } from "@0xsequence/kit";
 import "./globals.css";
 import "@0xsequence/design-system/styles.css";
-import "boilerplate-design-system/styles.css";
 
 import { useEffect, useState } from "react";
 import FullScreenLoading from "./components/FullScreenLoading";
