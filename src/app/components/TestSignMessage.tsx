@@ -8,8 +8,8 @@ import {
   useForm,
   useStoreData,
 } from "boilerplate-design-system";
-import { useAccount, useSignMessage } from "wagmi";
 import { SignableMessage } from "viem";
+import { useAccount, useSignMessage } from "wagmi";
 import { z } from "zod";
 
 const schemaSignMessage = z.object({

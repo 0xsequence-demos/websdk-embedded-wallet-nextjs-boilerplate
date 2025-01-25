@@ -1,10 +1,10 @@
 "use client";
 
-import { useAccount } from "wagmi";
+import { SequenceBoilerplate } from "boilerplate-design-system";
+import { useAccount, useDisconnect, useSwitchChain } from "wagmi";
 
 import Connector from "./components/Connector";
 import MainConnected from "./components/MainConnected";
-import { SequenceBoilerplate } from "boilerplate-design-system";
 
 const Home = () => {
   const { isConnected } = useAccount();
@@ -15,6 +15,7 @@ const Home = () => {
       name="Sequence Kit Starter - Nextjs"
       description="Embedded Wallet"
       docsUrl="https://docs.sequence.xyz/solutions/wallets/sequence-kit/overview/"
+      wagmi={{ useAccount, useDisconnect, useSwitchChain }}
     >
       {isConnected ? <MainConnected /> : <Connector />}
     </SequenceBoilerplate>

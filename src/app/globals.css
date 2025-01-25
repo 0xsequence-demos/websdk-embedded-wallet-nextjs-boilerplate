@@ -1,4 +1,4 @@
-@import "boilerplate-design-system/styles/index.css";
+@import "../../node_modules/boilerplate-design-system/dist/styles/src/index.css";
 
 @tailwind base;
 @tailwind components;

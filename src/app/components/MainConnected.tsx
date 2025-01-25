@@ -1,26 +1,11 @@
-import TestVerifyMessage from "../components/TestVerifyMessage";
+import { Card, Group } from "boilerplate-design-system";
+import { useAccount } from "wagmi";
 import TestSendTransaction from "../components/TestSendTransaction";
-import { NetworkSwitchInputSelect } from "../components/NetworkSwitchInputSelect";
 import TestSignMessage from "../components/TestSignMessage";
-
-import {
-  Card,
-  Divider,
-  Field,
-  Group,
-  Input,
-  Label,
-  SegmentedInput,
-  ShowAddressWithDisconnect,
-} from "boilerplate-design-system";
-import { useNativeBalance } from "../components/NativeBalance";
-import { useAccount, useDisconnect } from "wagmi";
+import TestVerifyMessage from "../components/TestVerifyMessage";
 
 const MainConnected = () => {
   const { address, chain, chainId } = useAccount();
-  const { disconnect } = useDisconnect();
-
-  const balance = useNativeBalance({ chain, address });
 
   if (!address || !chain || !chainId) {
     return (
@@ -38,31 +23,6 @@ const MainConnected = () => {
 
   return (
     <div className="flex flex-col gap-8">
-      <Group title="User info">
-        <Card style={{ gap: "1rem", display: "flex", flexDirection: "column" }}>
-          <ShowAddressWithDisconnect
-            address={address}
-            onDisconnect={() => disconnect()}
-          />
-
-          <NetworkSwitchInputSelect chainId={chain?.id?.toString()} />
-
-          <Field name="test-payments">
-            <Label>{chain.name} balance for test payments:</Label>
-            <SegmentedInput subvariants={{ width: "full" }}>
-              <Input
-                type="text"
-                variant="transparent"
-                value={balance}
-                onChange={() => {}}
-                subvariants={{ width: "full" }}
-                readOnly
-              />
-            </SegmentedInput>
-          </Field>
-        </Card>
-      </Group>
-      <Divider />
       <Group>
         <Card collapsable title="Sign message" data-id="sign-message">
           <TestSignMessage />
