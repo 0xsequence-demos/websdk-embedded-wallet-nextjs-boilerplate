@@ -4,7 +4,7 @@ import "./globals.css";
 import "@0xsequence/design-system/styles.css";
 
 import { useEffect, useState } from "react";
-import FullScreenLoading from "./components/FullScreenLoading";
+import { Loading } from "./views/Loading";
 import { config } from "../config";
 
 export default function RootLayout({
@@ -22,10 +22,11 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <link rel="icon" href="/favicon.svg" />
+        <title>Sequence Kit Starter - Nextjs</title>
       </head>
       <body>
         {!isClient ? (
-          <FullScreenLoading />
+          <Loading />
         ) : (
           <SequenceKit config={config}>
             <div id="root">{children}</div>

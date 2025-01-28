@@ -3,8 +3,8 @@
 import { SequenceBoilerplate } from "boilerplate-design-system";
 import { useAccount, useDisconnect, useSwitchChain } from "wagmi";
 
-import Connector from "./components/Connector";
-import MainConnected from "./components/MainConnected";
+import { Connected } from "./views/Connected";
+import { NotConnected } from "./views/NotConnected";
 
 const Home = () => {
   const { isConnected } = useAccount();
@@ -17,7 +17,7 @@ const Home = () => {
       docsUrl="https://docs.sequence.xyz/solutions/wallets/sequence-kit/overview/"
       wagmi={{ useAccount, useDisconnect, useSwitchChain }}
     >
-      {isConnected ? <MainConnected /> : <Connector />}
+      {isConnected ? <Connected /> : <NotConnected />}
     </SequenceBoilerplate>
   );
 };

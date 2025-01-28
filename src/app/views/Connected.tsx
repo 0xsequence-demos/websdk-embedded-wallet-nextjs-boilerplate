@@ -4,7 +4,7 @@ import TestSendTransaction from "../components/TestSendTransaction";
 import TestSignMessage from "../components/TestSignMessage";
 import TestVerifyMessage from "../components/TestVerifyMessage";
 
-const MainConnected = () => {
+export function Connected() {
   const { address, chain, chainId } = useAccount();
 
   if (!address || !chain || !chainId) {
@@ -24,20 +24,33 @@ const MainConnected = () => {
   return (
     <div className="flex flex-col gap-8">
       <Group>
-        <Card collapsable title="Sign message" data-id="sign-message">
+        <Card
+          collapsable
+          title="Sign message"
+          data-id="sign-message"
+          className="bg-white/10 border border-white/10 backdrop-blur-sm"
+        >
           <TestSignMessage />
         </Card>
 
-        <Card collapsable title="Verify message" data-id="verify-message">
+        <Card
+          collapsable
+          title="Verify message"
+          data-id="verify-message"
+          className="bg-white/10 border border-white/10 backdrop-blur-sm"
+        >
           <TestVerifyMessage chainId={chainId} />
         </Card>
 
-        <Card collapsable title="Send transaction" data-id="send-transaction">
+        <Card
+          collapsable
+          title="Send transaction"
+          data-id="send-transaction"
+          className="bg-white/10 border border-white/10 backdrop-blur-sm"
+        >
           <TestSendTransaction chainId={chainId} />
         </Card>
       </Group>
     </div>
   );
-};
-
-export default MainConnected;
+}
