@@ -13,13 +13,10 @@
     "0xsequence": "2.2.8",
     "@0xsequence/design-system": "^1.8.0",
     "@0xsequence/kit": "^4.4.4",
-    "@react-oauth/google": "^0.12.1",
-    "@tanstack/react-query": "^5.61.0",
     "boilerplate-design-system": "github:0xsequence-demos/boilerplate-design-system#fed9fa2f7ecb904380c7b3e8550665af4be771ba",
-    "ethers": "6.13.3",
-    "next": "14.2.14",
+    "ethers": "6.13.5",
+    "next": "14.2.25",
     "react": "^18.3.1",
-    "react-apple-signin-auth": "^1.1.0",
     "react-dom": "^18.3.1",
     "sonner": "^1.7.2",
     "viem": "^2.21.48",
@@ -27,7 +24,6 @@
     "zod": "^3.24.1"
   },
   "devDependencies": {
-    "@types/node": "^22.9.1",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
     "@typescript-eslint/eslint-plugin": "^7.18.0",
