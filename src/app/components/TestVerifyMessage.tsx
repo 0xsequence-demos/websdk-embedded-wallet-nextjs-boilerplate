@@ -73,10 +73,7 @@ const TestVerifyMessage = (props: { chainId: number }) => {
   //   "signMessage",
   // );
 
-  const handleVerifyMessage: FormHandler = async (
-    _,
-    data,
-  ) => {
+  const handleVerifyMessage: FormHandler = async (_, data) => {
     const { address, message, signature } = data as Record<string, any>;
 
     if (!(address && message && signature)) return;
