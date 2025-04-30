@@ -11,18 +11,19 @@
   },
   "dependencies": {
     "0xsequence": "2.3.9",
-    "@0xsequence/connect": "^5.1.1",
+    "@0xsequence/connect": "^5.2.1",
     "@0xsequence/design-system": "^2.1.7",
+    "@0xsequence/network": "^2.3.10",
     "@react-oauth/google": "^0.11.1",
-    "@tanstack/react-query": "^5.74.4",
+    "@tanstack/react-query": "^5.74.11",
     "boilerplate-design-system": "github:0xsequence-demos/boilerplate-design-system#52feab2d7a6a211028c7f8791ffff12fccab41e9",
     "ethers": "6.13.5",
     "next": "15.3.0",
     "pino-pretty": "^13.0.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
-    "viem": "^2.21.48",
-    "wagmi": "^2.14.16",
+    "viem": "^2.28.1",
+    "wagmi": "^2.15.1",
     "zod": "^3.24.1"
   },
   "devDependencies": {
