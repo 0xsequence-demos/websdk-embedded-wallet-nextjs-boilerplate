@@ -1,6 +1,7 @@
 "use client";
 import { Card, Group } from "boilerplate-design-system";
 import { useAccount } from "wagmi";
+import { TestLinkWallet } from "../components/TestLinkWallet";
 import TestSendTransaction from "../components/TestSendTransaction";
 import TestSignMessage from "../components/TestSignMessage";
 import TestVerifyMessage from "../components/TestVerifyMessage";
@@ -52,6 +53,7 @@ export function Connected() {
           <TestSendTransaction chainId={chainId} />
         </Card>
       </Group>
+      <TestLinkWallet />
     </div>
   );
 }
