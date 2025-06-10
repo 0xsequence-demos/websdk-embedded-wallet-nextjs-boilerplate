@@ -4,7 +4,7 @@ import { SequenceWalletProvider } from "@0xsequence/wallet-widget";
 import { useEffect, useState } from "react";
 import { Loading } from "@/app/views/Loading";
 import { config } from "../config";
-
+import { ThemeProvider } from "@0xsequence/design-system";
 export function Contexts({ children }: { children: React.ReactNode }) {
   const [hydrated, setHydrated] = useState(false);
 
@@ -22,8 +22,10 @@ export function Contexts({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <SequenceConnect config={config}>
-      <SequenceWalletProvider>{children}</SequenceWalletProvider>
-    </SequenceConnect>
+    <ThemeProvider>
+      <SequenceConnect config={config}>
+        <SequenceWalletProvider>{children}</SequenceWalletProvider>
+      </SequenceConnect>
+    </ThemeProvider>
   );
 }

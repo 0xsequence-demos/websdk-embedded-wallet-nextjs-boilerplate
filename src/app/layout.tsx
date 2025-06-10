@@ -1,5 +1,4 @@
 import "./globals.css";
-// import "@0xsequence/design-system/styles.css";
 
 import { Contexts } from "@/app/contexts";
 

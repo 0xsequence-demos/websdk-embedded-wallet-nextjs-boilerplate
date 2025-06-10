@@ -7,6 +7,7 @@ import {
 // Get your own keys on sequence.build
 export const projectAccessKey = process.env.NEXT_PUBLIC_PROJECT_ACCESS_KEY!;
 const waasConfigKey = process.env.NEXT_PUBLIC_WAAS_CONFIG_KEY!;
+const epicAuthUrl = process.env.NEXT_PUBLIC_EPIC_AUTH_URL!;
 const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
 const appleClientId = process.env.NEXT_PUBLIC_APPLE_CLIENT_ID;
 const appleRedirectURI =
@@ -39,4 +40,7 @@ export const config: any = createConfig("waas", {
   walletConnect: {
     projectId: walletConnectId as string,
   },
+  epic: {
+    authUrl: epicAuthUrl,
+  }
 });
